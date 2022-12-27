@@ -1,0 +1,37 @@
+header {
+    margin-top: 12px;
+    line-height: 4px;
+    text-align: center;
+
+}
+
+h1 {
+    font-size: 80px;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+hr {
+    border: .5px solid black;
+    width: 20%;
+
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: 24px;
+    justify-content: center;
+
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+
+}
