@@ -30,10 +30,13 @@ main {
     text-align: center;
     font-size: 24px;
     justify-content: center;
-    border-color: blue;
+    border-color: darkcyan;
     border-style: dashed;
     background-color: silver;
-
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 20px;
+    padding: 8px;
 }
 
 section {
@@ -54,6 +57,33 @@ aside {
     margin: 10px;
     padding: 12px;
 
+
+}
+
+header button {
+  background-color: darkcyan;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
+  box-shadow: 0px 4px;
+
+}
+
+aside button {
+  background-color: darkcyan;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 20px;
 
 }
 
