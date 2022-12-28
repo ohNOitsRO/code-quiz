@@ -61,6 +61,7 @@ aside {
 }
 
 header button {
+  position: relative;
   background-color: darkcyan;
   border: none;
   color: white;

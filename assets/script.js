@@ -9,17 +9,22 @@ function countdown(){
     var timerInterval = setInterval(function() {
             timerLeft--;
             startGame.textContent = timerLeft + " seconds remaining!";
+
+            if (timerLeft === 0) {
+                clearInterval(timerInterval);
+                startGame.textContent = "Game Over!";
+                
+            }
     
     }, 1000);
-
-    if (timerLeft === 0){
-        clearInterval(timerInterval);
-        
-    }
 }
 
+
+
+
+
 startGame.addEventListener("click", function() {
-        startGame.setAttribute("style", "box-shadow: 0px 0px;");
+        startGame.setAttribute("style", "box-shadow: 0px 0px; top: 4px;");
         countdown();
 
     });
