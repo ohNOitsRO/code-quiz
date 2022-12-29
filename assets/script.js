@@ -13,18 +13,14 @@ function countdown(){
             if (timerLeft === 0) {
                 clearInterval(timerInterval);
                 startGame.textContent = "Game Over!";
-                
             }
     
     }, 1000);
 }
-
-
-
-
 
 startGame.addEventListener("click", function() {
         startGame.setAttribute("style", "box-shadow: 0px 0px; top: 4px;");
         countdown();
 
     });
+
