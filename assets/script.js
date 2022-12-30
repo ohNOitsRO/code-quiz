@@ -5,16 +5,20 @@ var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
 let timerLeft = 75;
+let playerScore = 0;
+
 
 function countdown(){
     var timerInterval = setInterval(function() {
         timerLeft--;
         startGame.textContent = timerLeft + " seconds remaining!";
         
-        if (timerLeft === 0) {
+        if (timerLeft <= 0) {
             clearInterval(timerInterval);
             startGame.textContent = "Game Over!";
-                
+            if (startGame = "Game Over!"){
+                return;
+            }
         }
 
             
@@ -69,18 +73,41 @@ var questions = [
 let lastQuestion = questions.length - 1;
 let currentQuestion = 0;
 
-
 function showQuestions(){
-    let q = questions[lastQuestion];
+    let q = questions[currentQuestion];
     questionBox.textContent = q.title;
     firstAnswer.textContent = q.choices[0];
     secondAnswer.textContent = q.choices[1];
     thirdAnswer.textContent = q.choices[2];
     fourthAnswer.textContent = q.choices[3];
+
 }
 
-// when question is answered, show next question
-  currentQuestion++;
+function checkAnswer(){
+    
+    if (firstAnswer == questions[currentQuestion].answer) {
+            score = score + 10;
 
-  
+    }
+    else if (secondAnswer == questions[currentQuestion].answer) {
+        score = score + 10;
+
+    }
+    else if (thirdAnswer == questions[currentQuestion].answer) {
+        score = score + 10;
+
+    }
+    else if (fourthAnswer == questions[currentQuestion].answer) {
+        score = score + 10;
+
+    }
+    else {
+        timerLeft = timerLeft - 15;
+    }
+    currentQuestion++;
+    showQuestions();
+
+}
+
+
 showQuestions();
