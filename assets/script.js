@@ -6,19 +6,15 @@ var fourthAnswer = document.querySelector("#answer4");
 let timerLeft = 75;
 
 function countdown(){
-
-        var timerInterval = setInterval(function() {
+    var timerInterval = setInterval(function() {
+        timerLeft--;
+        startGame.textContent = timerLeft + " seconds remaining!";
             
-            if (timerLeft > 0) {
-            timerLeft--;
-            startGame.textContent = timerLeft + " seconds remaining!";
-            }
-
-            if (timerLeft === 0) {
-                clearInterval(timerInterval);
-                startGame.textContent = "Game Over!";
+        if (timerLeft === 0) {
+            clearInterval(timerInterval);
+            startGame.textContent = "Game Over!";
                 
-            }
+        }
 
             
     
@@ -28,7 +24,7 @@ function countdown(){
 
 startGame.addEventListener("click", function() {
         startGame.setAttribute("style", "box-shadow: 0px 0px; top: 4px;");
-        countdown;
+        countdown();
 
     });
 
