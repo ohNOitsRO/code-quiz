@@ -43,10 +43,9 @@ section {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: row;
-    font-size: 20px;
-    flex-basis: calc(50% - 40px);
+    margin: 0px 100px;
 }
 
 aside {
@@ -75,7 +74,7 @@ header button {
 
 }
 
-aside button {
+#answer1, #answer2, #answer3, #answer4 {
   background-color: darkcyan;
   border: none;
   color: white;
