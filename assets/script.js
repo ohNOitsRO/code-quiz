@@ -84,6 +84,7 @@ function showQuestions(){
 }
 
 function checkAnswer(){
+    var userAnswer = document.getElementById("answers");
 
     if (userAnswer == questions[currentQuestion].answer) {
             score = score + 10;
