@@ -84,21 +84,9 @@ function showQuestions(){
 }
 
 function checkAnswer(){
-    
-    if (firstAnswer == questions[currentQuestion].answer) {
+
+    if (userAnswer == questions[currentQuestion].answer) {
             score = score + 10;
-
-    }
-    else if (secondAnswer == questions[currentQuestion].answer) {
-        score = score + 10;
-
-    }
-    else if (thirdAnswer == questions[currentQuestion].answer) {
-        score = score + 10;
-
-    }
-    else if (fourthAnswer == questions[currentQuestion].answer) {
-        score = score + 10;
 
     }
     else {
