@@ -74,7 +74,7 @@ header button {
 
 }
 
-#answer1, #answer2, #answer3, #answer4 {
+.answer-button {
   background-color: darkcyan;
   border: none;
   color: white;

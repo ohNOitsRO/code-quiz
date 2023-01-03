@@ -1,9 +1,9 @@
 var startGame = document.querySelector("#startButton");
 var questionBox = document.querySelector("#questions");
-var firstAnswer = document.querySelector("#answer1");
-var secondAnswer = document.querySelector("#answer2");
-var thirdAnswer = document.querySelector("#answer3");
-var fourthAnswer = document.querySelector("#answer4");
+var firstAnswer = document.querySelector("#answer0");
+var secondAnswer = document.querySelector("#answer1");
+var thirdAnswer = document.querySelector("#answer2");
+var fourthAnswer = document.querySelector("#answer3");
 let timerLeft = 75;
 let playerScore = 0;
 
@@ -29,6 +29,7 @@ function countdown(){
 
 startGame.addEventListener("click", function() {
         startGame.setAttribute("style", "box-shadow: 0px 0px; top: 4px;");
+        showQuestions();
         countdown();
 
     });
@@ -83,8 +84,9 @@ function showQuestions(){
 
 }
 
-function checkAnswer(){
-    var userAnswer = document.getElementById("answers");
+const checkAnswer = function (userAnswer){
+    // userAnswer.addEventListener("click", checkAnswer)
+    console.log(userAnswer.target.id); 
 
     if (userAnswer == questions[currentQuestion].answer) {
             score = score + 10;
@@ -98,5 +100,10 @@ function checkAnswer(){
 
 }
 
+var answerButtons = document.querySelectorAll(".answer-button");
+      console.log(currentQuestion);
+    for (let i = 0; i < answerButtons.length; i++){
+            answerButtons[i].addEventListener("click", checkAnswer)
 
-showQuestions();
+    }
+    console.log(currentQuestion);
