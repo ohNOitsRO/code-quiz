@@ -5,6 +5,7 @@ var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
 let timerLeft = 75;
+let highScore = 0;
 
 function countdown(){
     var timerInterval = setInterval(function() {
@@ -28,7 +29,7 @@ function countdown(){
 startGame.addEventListener("click", function() {
         startGame.setAttribute("style", "box-shadow: 0px 0px; top: 4px;");
         countdown();
-
+        showQuestions();
     });
 
 var questions = [
@@ -83,19 +84,19 @@ function showQuestions(){
 
 function checkAnswer(userAnswer){
     console.log(userAnswer);
-    let playerScore = 0;
+
 
     if (userAnswer == questions[currentQuestion].answer) {
-            playerScore = playerScore + 10;
+            highScore = highScore + 10;
 
     }
     else {
         timerLeft = timerLeft - 15;
     }
+    
     currentQuestion++;
+
+    console.log(highScore);
     showQuestions();
 
 }
-
-
-showQuestions();
