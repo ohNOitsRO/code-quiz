@@ -16,6 +16,11 @@ function countdown(){
             clearInterval(timerInterval);
             startGame.textContent = "Game Over!";
             if (startGame = "Game Over!"){
+                firstAnswer.textContent = "";
+                secondAnswer.textContent = "";
+                thirdAnswer.textContent = "";
+                fourthAnswer.textContent = "";
+                document.querySelector("#answers").style.pointerEvents = 'none';
                 return;
             }
         }
