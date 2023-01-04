@@ -5,8 +5,6 @@ var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
 let timerLeft = 75;
-// let playerScore = 0;
-
 
 function countdown(){
     var timerInterval = setInterval(function() {
