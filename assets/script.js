@@ -5,7 +5,7 @@ var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
 let timerLeft = 75;
-let playerScore = 0;
+// let playerScore = 0;
 
 
 function countdown(){
@@ -83,11 +83,12 @@ function showQuestions(){
 
 }
 
-function checkAnswer(){
-    var userAnswer = document.getElementById("answers");
+function checkAnswer(userAnswer){
+    console.log(userAnswer);
+    let playerScore = 0;
 
     if (userAnswer == questions[currentQuestion].answer) {
-            score = score + 10;
+            playerScore = playerScore + 10;
 
     }
     else {
