@@ -26,9 +26,12 @@ function countdown(){
 
 }
 
+document.querySelector("#answers").style.pointerEvents = 'none';
+
 startGame.addEventListener("click", function() {
         startGame.setAttribute("style", "box-shadow: 0px 0px; top: 4px;");
         countdown();
+        document.querySelector("#answers").style.pointerEvents = 'auto';
         showQuestions();
     });
 
