@@ -7,10 +7,15 @@ var fourthAnswer = document.querySelector("#answer4");
 let timerLeft = 75;
 let highScore = 0;
 
+var playerData = {playerName: [], 
+                  playerScore: []};
+
 function countdown(){
     var timerInterval = setInterval(function() {
         timerLeft--;
         startGame.textContent = timerLeft + " seconds remaining!";
+        // var playerData = {playerName: [], 
+        //                   playerScore: []};
         
         if (timerLeft <= 0) {
             clearInterval(timerInterval);
@@ -21,6 +26,17 @@ function countdown(){
                 thirdAnswer.textContent = "";
                 fourthAnswer.textContent = "";
                 document.querySelector("#answers").style.pointerEvents = 'none';
+                
+
+                var finalScore = JSON.stringify(highScore);
+                var inputName = prompt("Please enter your name to track your High Score");
+
+                playerData.playerName.push(inputName);
+                playerData.playerScore.push(finalScore);
+                localStorage.setItem("playerdata", JSON.stringify(playerData));
+                
+
+                
                 return;
             }
         }
@@ -30,6 +46,29 @@ function countdown(){
     }, 1000);
 
 }
+
+
+
+// function endGame (){
+//     if (timerLeft <= 0 || currentQuestion == lastQuestion){
+//         firstAnswer.textContent = "";
+//         secondAnswer.textContent = "";
+//         thirdAnswer.textContent = "";
+//         fourthAnswer.textContent = "";
+//         document.querySelector("#answers").style.pointerEvents = 'none';
+
+//         var finalScore = JSON.stringify(highScore);
+//         var userName = prompt("Please enter your name to track your High Score");
+//         playerData.userName.push(userName);
+//         playerData.finalScore.push(finalScore);
+//         localStorage.setItem("playerdata", JSON.stringify(playerData));
+
+
+//     }
+
+// }
+
+
 
 document.querySelector("#answers").style.pointerEvents = 'none';
 
@@ -96,15 +135,23 @@ function checkAnswer(userAnswer){
 
     if (userAnswer == questions[currentQuestion].answer) {
             highScore = highScore + 10;
+            
+    }
+    else if (questions.indexOf(userAnswer) == lastQuestion){
+            console.log(questions.indexOf(userAnswer));
 
     }
+
+
     else {
         timerLeft = timerLeft - 15;
+
     }
     
     currentQuestion++;
 
     console.log(highScore);
+    console.log(questions.indexOf(userAnswer));
     showQuestions();
 
 }
