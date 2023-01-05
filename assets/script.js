@@ -7,8 +7,16 @@ var fourthAnswer = document.querySelector("#answer4");
 let timerLeft = 75;
 let highScore = 0;
 
-var playerData = {playerName: [], 
-                  playerScore: []};
+  if (localStorage.getItem("playerdata")){
+        var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
+
+  }
+  else {
+    var highScoreList = [];
+
+  }
+
+  
 
 function countdown(){
     var timerInterval = setInterval(function() {
@@ -30,10 +38,13 @@ function countdown(){
 
                 var finalScore = JSON.stringify(highScore);
                 var inputName = prompt("Please enter your name to track your High Score");
-
-                playerData.playerName.push(inputName);
-                playerData.playerScore.push(finalScore);
-                localStorage.setItem("playerdata", JSON.stringify(playerData));
+                var playerData = {
+                playerName: inputName,
+                playerScore: finalScore
+                }
+                highScoreList.push(playerData);
+                console.log(playerData,highScoreList);
+                localStorage.setItem("playerdata", JSON.stringify(highScoreList));
                 
 
                 
