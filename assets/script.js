@@ -4,62 +4,40 @@ var firstAnswer = document.querySelector("#answer1");
 var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
-let timerLeft = 75;
+let timerLeft = 50;
 let highScore = 0;
+
+document.querySelector("#answers").style.pointerEvents = 'none';
 
   if (localStorage.getItem("playerdata")){
         var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
 
   }
   else {
-    var highScoreList = [];
+        var highScoreList = [];
 
   }
-
-  
 
 function countdown(){
     var timerInterval = setInterval(function() {
         timerLeft--;
         startGame.textContent = timerLeft + " seconds remaining!";
         
-        if (timerLeft <= 0) {
+        if (timerLeft <= 0 || currentQuestion > lastQuestion) {
             clearInterval(timerInterval);
             startGame.textContent = "Game Over!";
-            if (startGame = "Game Over!"){
-                firstAnswer.textContent = "";
-                secondAnswer.textContent = "";
-                thirdAnswer.textContent = "";
-                fourthAnswer.textContent = "";
-                document.querySelector("#answers").style.pointerEvents = 'none';
-                
-
-                var finalScore = JSON.stringify(highScore);
-                var inputName = prompt("Please enter your name to track your High Score");
-                var playerData = {
-                playerName: inputName,
-                playerScore: finalScore
-                }
-                highScoreList.push(playerData);
-                console.log(playerData,highScoreList);
-                localStorage.setItem("playerdata", JSON.stringify(highScoreList));
-                
-
-                
-                return;
-            }
+            return;
+            // if (startGame = "Game Over!"){                
+            //     return;
+            // }
         }
-
-            
     
     }, 1000);
 
 }
 
-
-
 function endGame (){
-    if (timerLeft <= 0 || currentQuestion == lastQuestion){
+    if (timerLeft <= 0 || currentQuestion > lastQuestion){
         firstAnswer.textContent = "";
         secondAnswer.textContent = "";
         thirdAnswer.textContent = "";
@@ -81,10 +59,6 @@ function endGame (){
     }
 
 }
-
-
-
-document.querySelector("#answers").style.pointerEvents = 'none';
 
 startGame.addEventListener("click", function() {
         startGame.setAttribute("style", "box-shadow: 0px 0px; top: 4px;");
@@ -148,25 +122,24 @@ function checkAnswer(userAnswer){
 
     if (userAnswer == questions[currentQuestion].answer) {
             highScore = highScore + 10;
-            userAnswer.setAttribute("style", "background-color: green;");
+            document.querySelector("#answers").style.backgroundColor = "green";         
             currentQuestion++;
-            
+                      
     }
     else {
-        timerLeft = timerLeft - 15;
+        timerLeft = timerLeft - 10;
         currentQuestion++;
-
+        
     }
 
     if (currentQuestion > lastQuestion){
-            endGame();
+        endGame();
 
     }
     else {
         showQuestions();
-
     }
 
-    console.log(highScore);
+console.log(highScore);
     
 }

@@ -92,9 +92,15 @@ footer {
 
 }
 
-footer a {
+a {
     text-decoration: none;
     color: black;
     font-weight: bolder;
 
 }
+
+a:hover { 
+    text-shadow: 0 0 5px #858585; 
+
+}
+
