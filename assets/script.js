@@ -22,8 +22,6 @@ function countdown(){
     var timerInterval = setInterval(function() {
         timerLeft--;
         startGame.textContent = timerLeft + " seconds remaining!";
-        // var playerData = {playerName: [], 
-        //                   playerScore: []};
         
         if (timerLeft <= 0) {
             clearInterval(timerInterval);
@@ -60,24 +58,29 @@ function countdown(){
 
 
 
-// function endGame (){
-//     if (timerLeft <= 0 || currentQuestion == lastQuestion){
-//         firstAnswer.textContent = "";
-//         secondAnswer.textContent = "";
-//         thirdAnswer.textContent = "";
-//         fourthAnswer.textContent = "";
-//         document.querySelector("#answers").style.pointerEvents = 'none';
+function endGame (){
+    if (timerLeft <= 0 || currentQuestion == lastQuestion){
+        firstAnswer.textContent = "";
+        secondAnswer.textContent = "";
+        thirdAnswer.textContent = "";
+        fourthAnswer.textContent = "";
+        document.querySelector("#answers").style.pointerEvents = 'none';
 
-//         var finalScore = JSON.stringify(highScore);
-//         var userName = prompt("Please enter your name to track your High Score");
-//         playerData.userName.push(userName);
-//         playerData.finalScore.push(finalScore);
-//         localStorage.setItem("playerdata", JSON.stringify(playerData));
+        var finalScore = JSON.stringify(highScore);
+        var inputName = prompt("Please enter your name to track your High Score");
+        var playerData = {
+                playerName: inputName,
+                playerScore: finalScore
+            }
 
+        highScoreList.push(playerData);
+        console.log(playerData,highScoreList);
+        localStorage.setItem("playerdata", JSON.stringify(highScoreList));
 
-//     }
+    return;
+    }
 
-// }
+}
 
 
 
@@ -143,26 +146,27 @@ function showQuestions(){
 function checkAnswer(userAnswer){
     console.log(userAnswer);
 
-
     if (userAnswer == questions[currentQuestion].answer) {
             highScore = highScore + 10;
+            userAnswer.setAttribute("style", "background-color: green;");
+            currentQuestion++;
             
     }
-    else if (questions.indexOf(userAnswer) == lastQuestion){
-            console.log(questions.indexOf(userAnswer));
-
-    }
-
-
     else {
         timerLeft = timerLeft - 15;
+        currentQuestion++;
 
     }
-    
-    currentQuestion++;
+
+    if (currentQuestion > lastQuestion){
+            endGame();
+
+    }
+    else {
+        showQuestions();
+
+    }
 
     console.log(highScore);
-    console.log(questions.indexOf(userAnswer));
-    showQuestions();
-
+    
 }
