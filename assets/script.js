@@ -4,6 +4,8 @@ var firstAnswer = document.querySelector("#answer1");
 var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
+const audioCorrect = new Audio("assets/sfx/correct.wav");
+const audioIncorrect = new Audio("assets/sfx/incorrect.wav");
 let timerLeft = 50;
 let highScore = 0;
 
@@ -26,10 +28,9 @@ function countdown(){
         if (timerLeft <= 0 || currentQuestion > lastQuestion) {
             clearInterval(timerInterval);
             startGame.textContent = "Game Over!";
+            endGame();
             return;
-            // if (startGame = "Game Over!"){                
-            //     return;
-            // }
+    
         }
     
     }, 1000);
@@ -121,12 +122,14 @@ function checkAnswer(userAnswer){
     console.log(userAnswer);
 
     if (userAnswer == questions[currentQuestion].answer) {
+            audioCorrect.play();
             highScore = highScore + 10;
             document.querySelector("#answers").style.backgroundColor = "green";         
             currentQuestion++;
                       
     }
     else {
+        audioIncorrect.play();
         timerLeft = timerLeft - 10;
         currentQuestion++;
         
