@@ -4,7 +4,7 @@ var firstAnswer = document.querySelector("#answer1");
 var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
-// var scoreList = document.querySelector("high-scores");
+var highScores = document.querySelector("#high-scores");
 const audioCorrect = new Audio("assets/sfx/correct.wav");
 const audioIncorrect = new Audio("assets/sfx/incorrect.wav");
 let timerLeft = 50;
@@ -23,6 +23,7 @@ document.querySelector("#answers").style.pointerEvents = 'none';
 
 function countdown(){
     var timerInterval = setInterval(function() {
+        document.querySelector("#startButton").style.pointerEvents = 'none';
         timerLeft--;
         startGame.textContent = timerLeft + " seconds remaining!";
         
@@ -30,7 +31,6 @@ function countdown(){
             clearInterval(timerInterval);
             startGame.textContent = "Game Over!";
             endGame();
-            // playerRankings();
             return;
     
         }
@@ -39,8 +39,10 @@ function countdown(){
 
 }
 
+
+
 function endGame (){
-    if (timerLeft <= 0 || currentQuestion > lastQuestion){
+    
         firstAnswer.textContent = "";
         secondAnswer.textContent = "";
         thirdAnswer.textContent = "";
@@ -55,11 +57,11 @@ function endGame (){
             }
 
         highScoreList.push(playerData);
-        console.log(playerData,highScoreList);
         localStorage.setItem("playerdata", JSON.stringify(highScoreList));
+        playerRankings();
 
     return;
-    }
+    
 
 }
 
@@ -124,34 +126,37 @@ function checkAnswer(userAnswer){
     console.log(userAnswer);
 
     if (userAnswer == questions[currentQuestion].answer) {
-            audioCorrect.play();
-            highScore = highScore + 10;
-            document.querySelector("#answers").style.backgroundColor = "green";         
-            currentQuestion++;
+        audioCorrect.play();
+        highScore = highScore + 10;
+        document.querySelector("#answers").style.backgroundColor = "green";         
+        currentQuestion++;
+        showQuestions();
                       
     }
     else {
         audioIncorrect.play();
         timerLeft = timerLeft - 10;
         currentQuestion++;
+        showQuestions();
         
     }
 
-    if (currentQuestion > lastQuestion){
-        endGame();
-        // playerRankings();
-
-    }
-    else {
-        showQuestions();
-    }
+}
 
 function playerRankings(){
-    scoreList.textContent = highScoreList;
-
-
+    highScores.textContent = "highScoreList";
+    highScores.textContent = highScoreList;
+    for (var i = 0; i < todos.length; i++) {
+        var rank = highScoreList[i];
+    
+        var li = document.createElement("li");
+        li.textContent = rank;
+        li.setAttribute("playerdata", i);
+    
+        highScores.appendChild(li);
+      }
 }
 
+playerRankings();
 console.log(highScore);
     
-}
