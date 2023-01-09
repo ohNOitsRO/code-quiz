@@ -143,6 +143,12 @@ function checkAnswer(userAnswer){
         showQuestions();
     }
 
+// function playerRankings(){
+//     localStorage.getItem("playerdata");
+
+
+// }
+
 console.log(highScore);
     
 }
