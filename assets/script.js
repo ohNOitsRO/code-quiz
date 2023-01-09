@@ -4,6 +4,7 @@ var firstAnswer = document.querySelector("#answer1");
 var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
+// var scoreList = document.querySelector("high-scores");
 const audioCorrect = new Audio("assets/sfx/correct.wav");
 const audioIncorrect = new Audio("assets/sfx/incorrect.wav");
 let timerLeft = 50;
@@ -29,6 +30,7 @@ function countdown(){
             clearInterval(timerInterval);
             startGame.textContent = "Game Over!";
             endGame();
+            // playerRankings();
             return;
     
         }
@@ -137,17 +139,18 @@ function checkAnswer(userAnswer){
 
     if (currentQuestion > lastQuestion){
         endGame();
+        // playerRankings();
 
     }
     else {
         showQuestions();
     }
 
-// function playerRankings(){
-//     localStorage.getItem("playerdata");
+function playerRankings(){
+    scoreList.textContent = highScoreList;
 
 
-// }
+}
 
 console.log(highScore);
     
