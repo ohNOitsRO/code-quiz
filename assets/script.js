@@ -59,8 +59,7 @@ function endGame (){
         highScoreList.push(playerData);
         localStorage.setItem("playerdata", JSON.stringify(highScoreList));
         playerRankings();
-
-    return;
+        return;
     
 
 }
@@ -146,7 +145,7 @@ function checkAnswer(userAnswer){
 function playerRankings(){
     highScores.textContent = "highScoreList";
     highScores.textContent = highScoreList;
-    for (var i = 0; i < todos.length; i++) {
+    for (var i = 0; i < highScoreList.length; i++) {
         var rank = highScoreList[i];
     
         var li = document.createElement("li");
