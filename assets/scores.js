@@ -1,18 +1,29 @@
 var highScores = document.querySelector("#high-scores");
 
-if (localStorage.getItem("playerdata")){
-    var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
+// if (localStorage.getItem("playerdata")){
+//     var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
 
-}
-else {
-    var highScoreList = [];
+// }
+// else {
+//     var highScoreList = [];
 
-}
+// }
 
 function playerRankings(){
-    localStorage.getItem("playerdata");
-    var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
-    highScores.textContent = highScoreList;
+
+    if (localStorage.getItem("playerdata")){
+        var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
+    
+    }
+    else {
+        var highScoreList = [];
+    
+    }
+
+    localStorage.setItem("playerdata", JSON.stringify(highScoreList))
+    // localStorage.getItem("playerdata");
+    var highScoreList = JSON.stringify(localStorage.getItem("playerdata"));
+    // highScores.textContent = highScoreList;
 
     
     

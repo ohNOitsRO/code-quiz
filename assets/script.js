@@ -139,23 +139,5 @@ function checkAnswer(userAnswer){
 
 }
 
-function playerRankings(){
-    localStorage.getItem("playerdata");
-    var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
-    highScores.textContent = highScoreList.inputName;
-
-    
-    
-    for (var i = 0; i < highScoreList.length; i++) {
-        var rank = highScoreList[i];
-        
-        var li = document.createElement("li");
-        li.textContent = rank;
-        li.setAttribute("playerdata", i);
-    
-        highScores.appendChild(li);
-      }
-}
-
 console.log(highScore);
     
