@@ -24,7 +24,7 @@ hr {
 
 }
 
-main {
+main, ul {
     display: flex;
     flex-wrap: wrap;
     text-align: center;

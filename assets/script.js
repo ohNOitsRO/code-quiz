@@ -42,7 +42,6 @@ function countdown(){
 
 
 function endGame (){
-    
         firstAnswer.textContent = "";
         secondAnswer.textContent = "";
         thirdAnswer.textContent = "";
@@ -58,7 +57,7 @@ function endGame (){
 
         highScoreList.push(playerData);
         localStorage.setItem("playerdata", JSON.stringify(highScoreList));
-        playerRankings();
+        window.location.href = '/highscores.html';
         return;
     
 
@@ -106,8 +105,6 @@ var questions = [
     },
     ];
 
-
-
 let lastQuestion = questions.length - 1;
 let currentQuestion = 0;
 
@@ -143,11 +140,15 @@ function checkAnswer(userAnswer){
 }
 
 function playerRankings(){
-    highScores.textContent = "highScoreList";
-    highScores.textContent = highScoreList;
+    localStorage.getItem("playerdata");
+    var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
+    highScores.textContent = highScoreList.inputName;
+
+    
+    
     for (var i = 0; i < highScoreList.length; i++) {
         var rank = highScoreList[i];
-    
+        
         var li = document.createElement("li");
         li.textContent = rank;
         li.setAttribute("playerdata", i);
@@ -156,6 +157,5 @@ function playerRankings(){
       }
 }
 
-playerRankings();
 console.log(highScore);
     
