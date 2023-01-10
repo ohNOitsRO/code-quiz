@@ -1,18 +1,24 @@
 var highScores = document.querySelector("#high-scores");
 
-// if (localStorage.getItem("playerdata")){
-//     var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
-
-// }
-// else {
-//     var highScoreList = [];
-
-// }
 
 function playerRankings(){
 
     if (localStorage.getItem("playerdata")){
         var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
+
+        highScoreList.sort(function scoreOrder(a, b){
+            if (a.playerScore < b.playerScore){
+                return -1;
+        
+            }
+            if (a.playerScore > b.playerScore){
+                return 1;
+        
+            }
+            if (a.playerScore == b.playerScore){
+                return 0;
+            }
+        });
     
     }
     else {
@@ -20,11 +26,11 @@ function playerRankings(){
     
     }
 
-    localStorage.setItem("playerdata", JSON.stringify(highScoreList))
-    // localStorage.getItem("playerdata");
-    // var highScoreList = JSON.stringify(localStorage.getItem("playerdata"));
-    // highScores.textContent = highScoreList;
+    
 
+
+
+    localStorage.setItem("playerdata", JSON.stringify(highScoreList))
     
     
     for (var i = 0; i < highScoreList.length; i++) {
@@ -40,3 +46,4 @@ function playerRankings(){
 }
 
 playerRankings();
+
