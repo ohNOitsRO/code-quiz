@@ -1,3 +1,4 @@
+// DOM Elements for manipulating HTML
 var startGame = document.querySelector("#startButton");
 var questionBox = document.querySelector("#questions");
 var firstAnswer = document.querySelector("#answer1");
@@ -5,13 +6,19 @@ var secondAnswer = document.querySelector("#answer2");
 var thirdAnswer = document.querySelector("#answer3");
 var fourthAnswer = document.querySelector("#answer4");
 var highScores = document.querySelector("#high-scores");
+
+// Audio files to play during quiz
 const audioCorrect = new Audio("assets/sfx/correct.wav");
 const audioIncorrect = new Audio("assets/sfx/incorrect.wav");
+
+// Start timer and start score for quiz
 let timerLeft = 50;
 let highScore = 0;
 
+// Removes click ability on answers before quiz starts
 document.querySelector("#answers").style.pointerEvents = 'none';
 
+// If there is local storage data, push data into an array - if no local storage data, create an empty array to hold high score information
   if (localStorage.getItem("playerdata")){
         var highScoreList = JSON.parse(localStorage.getItem("playerdata"));
 
@@ -21,6 +28,7 @@ document.querySelector("#answers").style.pointerEvents = 'none';
 
   }
 
+// Function for countdown timer on quiz - Quiz ends when timer reaches 0, or user answers last question
 function countdown(){
     var timerInterval = setInterval(function() {
         document.querySelector("#startButton").style.pointerEvents = 'none';
@@ -40,7 +48,11 @@ function countdown(){
 }
 
 
-
+// Function to end quiz
+// Empties and removes click ability on answer bubbles
+// Creates object with player name input and quiz score
+// Pushes user name input and user score into an array
+// Turns array into string and stores into local storage
 function endGame (){
         firstAnswer.textContent = "";
         secondAnswer.textContent = "";
@@ -60,9 +72,9 @@ function endGame (){
         window.location.href = '/highscores.html';
         return;
     
-
 }
 
+// Adds click ability to start game button, starts countdown timer, enables click on answer bubbles, and populates first question
 startGame.addEventListener("click", function() {
         startGame.setAttribute("style", "box-shadow: 0px 0px; top: 4px;");
         countdown();
@@ -70,6 +82,7 @@ startGame.addEventListener("click", function() {
         showQuestions();
     });
 
+// Object of quiz questions, answer choices, and correct answer
 var questions = [
     {
         title: 'Commonly used data types DO NOT include:',
@@ -105,9 +118,11 @@ var questions = [
     },
     ];
 
+// Sets parameters for the start of the quiz, or first question, and the last question of the quiz
+let currentQuestion = 0; 
 let lastQuestion = questions.length - 1;
-let currentQuestion = 0;
 
+// Function to populate questions and answer bubbles
 function showQuestions(){
     let q = questions[currentQuestion];
     questionBox.textContent = q.title;
@@ -118,13 +133,13 @@ function showQuestions(){
 
 }
 
+// Function to check if user answer choice is correct or incorrect
 function checkAnswer(userAnswer){
     console.log(userAnswer);
 
     if (userAnswer == questions[currentQuestion].answer) {
         audioCorrect.play();
-        highScore = highScore + 10;
-        document.querySelector("#answers").style.backgroundColor = "green";         
+        highScore = highScore + 10;         
         currentQuestion++;
         showQuestions();
                       
@@ -138,6 +153,4 @@ function checkAnswer(userAnswer){
     }
 
 }
-
-console.log(highScore);
     

@@ -1,3 +1,4 @@
+/*  Global Page Elements  */
 body {
     background-color: darkgrey;
 
@@ -6,6 +7,11 @@ body {
 header {
     margin-top: 12px;
     line-height: 4px;
+    text-align: center;
+
+}
+
+footer {
     text-align: center;
 
 }
@@ -24,6 +30,7 @@ hr {
 
 }
 
+/* Main Quiz Box Styles*/
 main {
     display: flex;
     flex-wrap: wrap;
@@ -39,6 +46,7 @@ main {
     padding: 8px;
 }
 
+/* Ordered List Styles */
 ol {
     display: block;
     text-align: center;
@@ -53,6 +61,7 @@ ol {
     padding: 0px 250px 0px;
 }
 
+/* Answer Bubble Styles */
 section {
     display: flex;
     flex-wrap: wrap;
@@ -62,17 +71,7 @@ section {
     margin: 0px 100px;
 }
 
-aside {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid black;
-    margin: 10px;
-    padding: 12px;
-
-
-}
-
+/* Start Button Styles */
 header button {
   position: relative;
   background-color: darkcyan;
@@ -88,6 +87,7 @@ header button {
 
 }
 
+/* Answer Bubble Styles */
 #answer1, #answer2, #answer3, #answer4 {
   background-color: darkcyan;
   border: none;
@@ -101,11 +101,8 @@ header button {
 
 }
 
-footer {
-    text-align: center;
 
-}
-
+/* Link Styles */
 a {
     text-decoration: none;
     color: black;
