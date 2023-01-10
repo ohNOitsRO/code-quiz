@@ -22,16 +22,17 @@ function playerRankings(){
 
     localStorage.setItem("playerdata", JSON.stringify(highScoreList))
     // localStorage.getItem("playerdata");
-    var highScoreList = JSON.stringify(localStorage.getItem("playerdata"));
+    // var highScoreList = JSON.stringify(localStorage.getItem("playerdata"));
     // highScores.textContent = highScoreList;
 
     
     
     for (var i = 0; i < highScoreList.length; i++) {
-        var rank = highScoreList[i];
+        var userRank = highScoreList[i].playerName;
+        var userScore = highScoreList[i].playerScore;
         
         var li = document.createElement("li");
-        li.textContent = rank;
+        li.textContent = userRank + " " + userScore;
         li.setAttribute("playerdata", i);
     
         highScores.appendChild(li);

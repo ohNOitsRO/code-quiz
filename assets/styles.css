@@ -24,7 +24,7 @@ hr {
 
 }
 
-main, ul {
+main {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -37,6 +37,20 @@ main, ul {
     margin-right: 60px;
     border-radius: 20px;
     padding: 8px;
+}
+
+ol {
+    display: block;
+    text-align: center;
+    font-size: 24px;
+    justify-content: center;
+    border-color: darkcyan;
+    border-style: dashed;
+    background-color: silver;
+    margin-left: 60px;
+    margin-right: 60px;
+    border-radius: 20px;
+    padding: 0px 250px 0px;
 }
 
 section {
