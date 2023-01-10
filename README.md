@@ -4,7 +4,7 @@
 
 This Code Quiz will test your basic web development knowledge. Answer a series of questions regarding HTML, CSS, and JavaScript and see how you perform against other users.
 
-Check out the webapge: 
+Check out the webapge: https://ohNOitsRo.github.io/code-quiz
 
 ## Table of Contents
 
